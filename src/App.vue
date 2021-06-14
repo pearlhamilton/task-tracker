@@ -32,8 +32,18 @@ export default {
    
     methods:{
 
-    addTask(task){
-      this.tasks = [...this.tasks, task]
+    async addTask(task){
+      console.log(task)
+      const res = await fetch('http://localhost:3000/tasks/', {
+        method: 'POST',
+        body: JSON.stringify(task),
+        headers: { "Content-Type": "application/json" }
+      
+      })
+
+      const data = await res.json()
+      console.log(data)
+      this.tasks = [...this.tasks, data]
 
     },
 
