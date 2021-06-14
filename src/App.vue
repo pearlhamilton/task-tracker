@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header @toggle-form= "toggleForm" title="Task Tracker"/>
+    <Header @toggle-form= "toggleForm" title="Task Tracker" :showAddTask = "showAddTask" />
     <div v-show="showAddTask">
     <AddTask @add-task = "addTask"/>
     </div>
