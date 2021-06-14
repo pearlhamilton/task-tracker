@@ -47,7 +47,10 @@ export default {
 
     },
 
-    deleteTask(id){
+    async deleteTask(id){
+      const res = await fetch(`http://localhost:3000/tasks/${id}`,{
+        method: 'DELETE'
+      })
       this.tasks = this.tasks.filter((task) => task.id !== id)
 
     },
