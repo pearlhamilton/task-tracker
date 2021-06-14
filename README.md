@@ -1,5 +1,7 @@
 # task-tracker
 
+Vue.js frontend for task-tracker app 
+
 ## Project setup
 ```
 npm install
