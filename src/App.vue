@@ -1,10 +1,7 @@
 <template>
   <div class="container">
     <Header @toggle-form= "toggleForm" title="Task Tracker" :showAddTask = "showAddTask" />
-    <div v-show="showAddTask">
-    <AddTask @add-task = "addTask"/>
-    </div>
-    <Tasks @toggle-reminder= "toggleReminder" @delete-task= "deleteTask" :tasks="tasks"/>
+      <router-view :showAddTask= "showAddTask"></router-view>
     <Footer/>
     
   </div>
@@ -12,58 +9,23 @@
 
 <script>
 import Header from './components/Header'
-import Tasks from './components/Tasks'
-import AddTask from './components/AddTask'
 import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks,
-    AddTask,
     Footer
 
   },
 
   data(){
     return {
-      tasks: [],
       showAddTask: false 
     }
   },
    
     methods:{
-
-    async addTask(task){
-      console.log(task)
-      const res = await fetch('http://localhost:3000/tasks/', {
-        method: 'POST',
-        body: JSON.stringify(task),
-        headers: { "Content-Type": "application/json" }
-      
-      })
-
-      const data = await res.json()
-      console.log(data)
-      this.tasks = [...this.tasks, data]
-
-    },
-
-    async deleteTask(id){
-      const res = await fetch(`http://localhost:3000/tasks/${id}`,{
-        method: 'DELETE'
-      })
-      this.tasks = this.tasks.filter((task) => task.id !== id)
-
-    },
-
-    async toggleReminder(id){
-      const res = await fetch(`http://localhost:3000/tasks/${id}`, { method: 'PATCH'
-      })
-      this.tasks = this.tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task)
-
-    },
 
     toggleForm(){
       this.showAddTask = !this.showAddTask
@@ -74,13 +36,6 @@ export default {
   },
 
 
-    async created() {
-      const res = await fetch ('http://localhost:3000/tasks/')
-      const data = await res.json()
-      console.log(data)
-      this.tasks = data.tasks
-
-  },
 }
 </script>
 
