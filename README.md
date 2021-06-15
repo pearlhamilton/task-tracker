@@ -1,6 +1,6 @@
 # task-tracker
 
-Vue.js frontend for task-tracker app following Traversy Media's [Vue JS Crash Course 2021](https://www.youtube.com/watch?v=qZXt1Aom3Cs&t=5698s). Rather than using json for the backend as the video suggests, I created my own REST API using Express.js
+Vue.js frontend for task-tracker app following Traversy Media's [Vue JS Crash Course 2021](https://www.youtube.com/watch?v=qZXt1Aom3Cs&t=5698s). Rather than using json for the backend as the video suggests, I created a REST API using Express.js [find here](https://github.com/pearlhamilton/task-tracker-api).
 
 ## Project setup
 ```
